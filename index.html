@@ -35,7 +35,7 @@
   header p{ color:#64748b; font-size:.95rem; }
 
   /* =========================================================
-     LOGO ANIMADO (efecto de logo.html + style.css + logo.jpg)
+     LOGO ANIMADO
      ========================================================= */
   .logo-hero{
     position:relative;
@@ -69,11 +69,7 @@
     background:#0f1e3d;
   }
 
-  /* Cuadrícula animada (tomada de style.css) */
-  .box{
-    opacity:0;
-    animation:wavey 5s ease alternate infinite;
-  }
+  .box{ opacity:0; animation:wavey 5s ease alternate infinite; }
   .box.wave1{ animation-delay:0s; }
   .box.wave2{ animation-delay:.1s; }
   .box.wave3{ animation-delay:.3s; }
@@ -159,11 +155,7 @@
   .btn-secundario:hover{ background:#cbd5e1; }
   .btn-peligro{ background:#fee2e2; color:var(--rojo); }
   .btn-peligro:hover{ background:#fecaca; }
-  .btn-mini{
-    padding:6px 12px;
-    font-size:.8rem;
-    border-radius:7px;
-  }
+  .btn-mini{ padding:6px 12px; font-size:.8rem; border-radius:7px; }
 
   /* ---------- Tabla ---------- */
   .barra-superior{
@@ -183,11 +175,7 @@
     border-radius:20px;
   }
   .tabla-wrapper{ overflow-x:auto; }
-  table{
-    width:100%;
-    border-collapse:collapse;
-    font-size:.9rem;
-  }
+  table{ width:100%; border-collapse:collapse; font-size:.9rem; }
   thead th{
     background:var(--gris);
     text-align:left;
@@ -238,7 +226,6 @@
   .estado.on  { background:#dcfce7; color:#166534; }
   .estado.off { background:#fee2e2; color:#991b1b; }
 
-  /* Mensaje flotante */
   #toast{
     position:fixed;
     bottom:24px;
@@ -269,65 +256,50 @@
 <body>
 
 <header>
-  <!-- Logo animado: cuadrícula de fondo + logo.jpg encima -->
   <div class="logo-hero" aria-label="Logo San Felipe Neri · 190 años">
-    <svg class="logo-fondo" viewBox="0 0 200 200"
-         shape-rendering="crispEdges"
-         xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <rect                class="box wave1" width="50" height="50" fill="#66AF4C"/>
-      <rect x="50"         class="box wave2" width="50" height="50" fill="#5D9D68"/>
-      <rect x="100"        class="box wave3" width="50" height="50" fill="#52868A"/>
-      <rect x="150"        class="box wave4" width="50" height="50" fill="#4874A6"/>
-
-      <rect      y="50"    class="box wave2" width="50" height="50" fill="#8CB13F"/>
-      <rect x="50" y="50"  class="box wave3" width="50" height="50" fill="#849857"/>
+    <svg class="logo-fondo" viewBox="0 0 200 200" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect class="box wave1" width="50" height="50" fill="#66AF4C"/>
+      <rect x="50" class="box wave2" width="50" height="50" fill="#5D9D68"/>
+      <rect x="100" class="box wave3" width="50" height="50" fill="#52868A"/>
+      <rect x="150" class="box wave4" width="50" height="50" fill="#4874A6"/>
+      <rect y="50" class="box wave2" width="50" height="50" fill="#8CB13F"/>
+      <rect x="50" y="50" class="box wave3" width="50" height="50" fill="#849857"/>
       <rect x="100" y="50" class="box wave4" width="50" height="50" fill="#7A7C73"/>
       <rect x="150" y="50" class="box wave5" width="50" height="50" fill="#72638A"/>
-
-      <rect      y="100"   class="box wave3" width="50" height="50" fill="#BAB230"/>
+      <rect y="100" class="box wave3" width="50" height="50" fill="#BAB230"/>
       <rect x="50" y="100" class="box wave4" width="50" height="50" fill="#B39442"/>
       <rect x="100" y="100" class="box wave5" width="50" height="50" fill="#AB6F57"/>
       <rect x="150" y="100" class="box wave6" width="50" height="50" fill="#A45069"/>
-
-      <rect      y="150"   class="box wave4" width="50" height="50" fill="#E0B423"/>
+      <rect y="150" class="box wave4" width="50" height="50" fill="#E0B423"/>
       <rect x="50" y="150" class="box wave5" width="50" height="50" fill="#DA9031"/>
       <rect x="100" y="150" class="box wave6" width="50" height="50" fill="#D36541"/>
       <rect x="150" y="150" class="box wave7" width="50" height="50" fill="#CD404E"/>
     </svg>
-
-    <!-- onerror: si logo.jpg no carga, se oculta y queda la cuadrícula animada -->
-    <img src="./LOGO.jpg"
-         alt="Logo San Felipe Neri · 190 años"
-         class="logo-imagen"
-         onerror="this.style.display='none'">
+    <!-- Ruta relativa corregida y fallback -->
+    <img src="./logo.jpg" alt="Logo San Felipe Neri" class="logo-imagen" onerror="this.style.display='none'">
   </div>
 
-  <h1>📚 Repositorio de Libros TRUEQUEBOOKS</h1>
+  <h1>📚 Repositorio de Libros</h1>
   <p>Proyecto estudiantil · Registra el nombre del libro, el autor y tu reseña</p>
 </header>
 
 <div class="contenedor">
-
-  <!-- ================= FORMULARIO ================= -->
+  <!-- FORMULARIO -->
   <section class="tarjeta">
     <h2>➕ Nuevo registro</h2>
-
     <form id="formLibro" autocomplete="off">
       <div class="campo">
         <label for="nombre">Nombre del libro *</label>
         <input type="text" id="nombre" placeholder="Ej: Cien años de soledad" maxlength="120" required>
       </div>
-
       <div class="campo">
         <label for="autor">Autor *</label>
         <input type="text" id="autor" placeholder="Ej: Gabriel García Márquez" maxlength="90" required>
       </div>
-
       <div class="campo">
         <label for="resena">Reseña *</label>
         <textarea id="resena" placeholder="Escribe tu opinión sobre el libro..." maxlength="800" required></textarea>
       </div>
-
       <div class="acciones">
         <button type="submit" class="btn-principal">💾 Guardar registro</button>
         <button type="reset" class="btn-secundario">🧹 Limpiar</button>
@@ -335,7 +307,7 @@
     </form>
   </section>
 
-  <!-- ================= LISTADO ================= -->
+  <!-- LISTADO -->
   <section class="tarjeta">
     <div class="barra-superior">
       <h2 style="margin:0;">📖 Libros registrados</h2>
@@ -363,179 +335,126 @@
       Todavía no hay libros registrados.<br>Completa el formulario para agregar el primero.
     </div>
 
-    <div class="acciones" style="margin-top:20px;">
-      <button type="button" class="btn-secundario" id="btnExportar">⬇️ Descargar base de datos (.json)</button>
+    <div class="acciones" style="margin-top:20px; justify-content: space-between; align-items:center;">
+      <div>
+        <button type="button" class="btn-secundario" id="btnExportar">⬇️ Descargar base de datos</button>
+      </div>
+      <div>
+        <!-- Botón para configurar el token sin exponerlo en el código -->
+        <button type="button" class="btn-secundario" id="btnConfigToken" style="font-size: 0.8rem; padding: 8px 12px;">
+          ⚙️ Configurar Token GitHub
+        </button>
+      </div>
     </div>
 
     <p class="aviso">
-      <strong>Sincronización con GitHub:</strong>
-      <span id="estadoGithub" class="estado off">comprobando…</span><br>
-      Al iniciar, la página lee automáticamente <code>biblioteca.json</code> del repositorio.
-      Cada alta o baja se guarda en el navegador (<code>localStorage</code>) y, si la sincronización
-      está activa, también se sube al repositorio mediante la API de GitHub. El botón
-      <em>“Descargar base de datos”</em> sigue disponible como respaldo manual.
+      <strong>Sincronización con GitHub:</strong> <span id="estadoGithub" class="estado off">comprobando…</span><br>
+      Para guardar cambios en el repositorio, haz clic en <em>"Configurar Token GitHub"</em> e ingresa tu token.
+      Este se guardará de forma segura en tu navegador y no se subirá a internet.
     </p>
   </section>
-
 </div>
 
 <div id="toast"></div>
 
 <script>
 /* =========================================================
-   CONFIGURACIÓN DE GITHUB  ←←← EDITA ESTA SECCIÓN
+   CONFIGURACIÓN DEL REPOSITORIO (Ya sin el token)
    ========================================================= */
 const GITHUB_CONFIG = {
   owner:  'Pablolu2024',
   repo:   'TRUEQUEBOOKS',
-  branch: 'main',
-  path:   'biblioteca.json',   
-  token:  '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'                   
+  branch: 'main'
 };
 
 /* =========================================================
-   BASE DE DATOS INTERNA
+   VARIABLES Y ESTADO
    ========================================================= */
 const CLAVE = 'repositorio_libros_v1';
+const CLAVE_TOKEN = 'github_trigger_token'; // Aquí se guarda el token en el navegador
 let libros = [];
+let githubToken = localStorage.getItem(CLAVE_TOKEN) || '';
 
-/* ---------- ¿Está activada la sincronización con GitHub? ---------- */
+/* ---------- Validaciones ---------- */
 function githubActivado() {
-  const t = GITHUB_CONFIG.token;
-  return typeof t === 'string' && t.trim().length > 0 && !t.includes('xxxx');
+  return githubToken.trim().length > 0;
 }
 
-/* ---------- Cargar datos al iniciar ---------- */
+/* ---------- Cargar datos ---------- */
 async function cargarDatos() {
-  /* 1) Intentar primero con biblioteca.json remoto (fuente de verdad) */
-  if (githubActivado() || location.protocol !== 'file:') {
-    try {
-      const resp = await fetch(GITHUB_CONFIG.path + '?t=' + Date.now(), { cache: 'no-store' });
-      if (resp.ok) {
-        const datos = await resp.json();
-        if (Array.isArray(datos)) {
-          libros = datos;
-          guardarLocal();   // copia local, sin re-sincronizar a GitHub
-          return;
-        }
-      }
-    } catch (e) {
-      /* sigue con el respaldo local */
-    }
-  }
-
-  /* 2) Respaldo: lo que haya en localStorage */
   try {
-    const locales = JSON.parse(localStorage.getItem(CLAVE));
-    if (Array.isArray(locales)) {
-      libros = locales;
-      return;
+    const resp = await fetch('biblioteca.json?t=' + Date.now(), { cache: 'no-store' });
+    if (resp.ok) {
+      const datos = await resp.json();
+      if (Array.isArray(datos)) {
+        libros = datos;
+        guardarLocal();
+        return;
+      }
     }
   } catch (e) { /* continúa */ }
 
-  /* 3) Vacío */
-  libros = [];
+  try {
+    const locales = JSON.parse(localStorage.getItem(CLAVE));
+    if (Array.isArray(locales)) libros = locales;
+  } catch (e) { libros = []; }
 }
 
-/* ---------- Guardar SOLO en localStorage ---------- */
+/* ---------- Guardado local ---------- */
 function guardarLocal() {
   localStorage.setItem(CLAVE, JSON.stringify(libros));
 }
 
-/* ---------- Guardar en localStorage + GitHub ---------- */
+/* ---------- Guardar y disparar GitHub Actions ---------- */
 async function guardarDatos() {
   guardarLocal();
-  await guardarEnGitHub();
+  await dispararGitHubAction();
 }
 
 /* =========================================================
-   SINCRONIZACIÓN CON GITHUB (API REST)
+   SINCRONIZACIÓN VÍA GITHUB ACTIONS (repository_dispatch)
    ========================================================= */
-let _saveEnCurso = false;
-let _savePendiente = false;
-
-function toBase64(str) {
-  const bytes = new TextEncoder().encode(str);
-  let bin = '';
-  bytes.forEach(b => bin += String.fromCharCode(b));
-  return btoa(bin);
-}
-
-async function guardarEnGitHub() {
-  if (!githubActivado()) return;
-
-  // Evitar múltiples PUT simultáneos (por ejemplo al borrar rápido)
-  if (_saveEnCurso) {
-    _savePendiente = true;
+async function dispararGitHubAction() {
+  if (!githubActivado()) {
+    mostrarToast('Guardado local. Configura el token para subir a GitHub.', 'error');
     return;
   }
-  _saveEnCurso = true;
 
   try {
-    const baseUrl = `https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/contents/${GITHUB_CONFIG.path}`;
-
-    // 1) SHA actual del archivo (necesario para actualizar)
-    let sha = null;
-    const getResp = await fetch(baseUrl + '?ref=' + GITHUB_CONFIG.branch, {
-      headers: {
-        'Authorization': `token ${GITHUB_CONFIG.token}`,
-        'Accept': 'application/vnd.github.v3+json'
-      }
-    });
-    if (getResp.ok) {
-      const data = await getResp.json();
-      sha = data.sha;
-    } else if (getResp.status !== 404) {
-      const err = await getResp.json().catch(() => ({}));
-      mostrarToast('GitHub (GET): ' + (err.message || getResp.status), 'error');
-      return;
-    }
-
-    // 2) PUT: crear/actualizar
+    const url = `https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/dispatches`;
     const body = {
-      message: `Actualizar biblioteca.json (${libros.length} registros)`,
-      content: toBase64(JSON.stringify(libros, null, 2)),
-      branch:  GITHUB_CONFIG.branch
+      event_type: 'sincronizar_libros',
+      client_payload: {
+        libros: JSON.stringify(libros) // Enviamos todo el arreglo actualizado
+      }
     };
-    if (sha) body.sha = sha;
 
-    const putResp = await fetch(baseUrl, {
-      method: 'PUT',
+    const resp = await fetch(url, {
+      method: 'POST',
       headers: {
-        'Authorization': `token ${GITHUB_CONFIG.token}`,
+        'Authorization': `token ${githubToken}`,
         'Accept': 'application/vnd.github.v3+json',
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(body)
     });
 
-    if (putResp.ok) {
-      mostrarToast('✅ Guardado y sincronizado en GitHub', 'ok');
+    if (resp.ok) {
+      mostrarToast('✅ Enviado a GitHub. Se actualizará en unos segundos.', 'ok');
     } else {
-      const err = await putResp.json().catch(() => ({}));
-      mostrarToast('GitHub (PUT): ' + (err.message || putResp.status), 'error');
+      const err = await resp.json().catch(() => ({}));
+      mostrarToast('Error (GitHub): ' + (err.message || resp.status), 'error');
     }
   } catch (e) {
-    mostrarToast('Sin conexión con GitHub', 'error');
-  } finally {
-    _saveEnCurso = false;
-    if (_savePendiente) {
-      _savePendiente = false;
-      guardarEnGitHub();  // encadenar el guardado pendiente
-    }
+    mostrarToast('Error de conexión al disparar la Action', 'error');
   }
 }
 
 /* =========================================================
-   UTILIDADES
+   UTILIDADES Y RENDERIZADO
    ========================================================= */
 function escaparHTML(texto) {
-  return String(texto)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#39;');
+  return String(texto).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 }
 
 function mostrarToast(mensaje, tipo = 'ok') {
@@ -543,12 +462,9 @@ function mostrarToast(mensaje, tipo = 'ok') {
   toast.textContent = mensaje;
   toast.className = 'visible ' + tipo;
   clearTimeout(toast._timer);
-  toast._timer = setTimeout(() => { toast.className = ''; }, 2600);
+  toast._timer = setTimeout(() => { toast.className = ''; }, 3500);
 }
 
-/* =========================================================
-   RENDERIZADO DEL LISTADO
-   ========================================================= */
 function renderizar() {
   const cuerpo = document.getElementById('cuerpoTabla');
   const vacio  = document.getElementById('mensajeVacio');
@@ -556,10 +472,7 @@ function renderizar() {
   const cont   = document.getElementById('contador');
 
   cuerpo.innerHTML = '';
-
-  cont.textContent = libros.length === 1
-    ? '1 registro'
-    : libros.length + ' registros';
+  cont.textContent = libros.length === 1 ? '1 registro' : libros.length + ' registros';
 
   if (libros.length === 0) {
     tabla.style.display = 'none';
@@ -578,20 +491,17 @@ function renderizar() {
       <td class="autor">${escaparHTML(libro.autor)}</td>
       <td class="resena">${escaparHTML(libro.resena)}</td>
       <td class="fecha">${escaparHTML(libro.fecha)}</td>
-      <td>
-        <button class="btn-peligro btn-mini" data-id="${libro.id}">Eliminar</button>
-      </td>
+      <td><button class="btn-peligro btn-mini" data-id="${libro.id}">Eliminar</button></td>
     `;
     cuerpo.appendChild(fila);
   });
 }
 
 /* =========================================================
-   GUARDAR REGISTRO
+   EVENTOS DE LA INTERFAZ
    ========================================================= */
 document.getElementById('formLibro').addEventListener('submit', function (e) {
   e.preventDefault();
-
   const nombre = document.getElementById('nombre').value.trim();
   const autor  = document.getElementById('autor').value.trim();
   const resena = document.getElementById('resena').value.trim();
@@ -601,30 +511,19 @@ document.getElementById('formLibro').addEventListener('submit', function (e) {
     return;
   }
 
-  const nuevoLibro = {
+  libros.push({
     id: Date.now().toString(36) + Math.random().toString(36).slice(2, 7),
-    nombre: nombre,
-    autor: autor,
-    resena: resena,
-    fecha: new Date().toLocaleString('es-CO', {
-      day: '2-digit', month: '2-digit', year: 'numeric',
-      hour: '2-digit', minute: '2-digit'
-    })
-  };
+    nombre, autor, resena,
+    fecha: new Date().toLocaleString('es-CO', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' })
+  });
 
-  libros.push(nuevoLibro);
-  guardarDatos();       // local + GitHub
+  guardarDatos(); // Guarda local y dispara Action
   renderizar();
-
   this.reset();
   document.getElementById('nombre').focus();
-
   mostrarToast('✅ Registro guardado', 'ok');
 });
 
-/* =========================================================
-   ELIMINAR UN REGISTRO
-   ========================================================= */
 document.getElementById('cuerpoTabla').addEventListener('click', function (e) {
   const boton = e.target.closest('button[data-id]');
   if (!boton) return;
@@ -635,46 +534,52 @@ document.getElementById('cuerpoTabla').addEventListener('click', function (e) {
 
   if (confirm(`¿Eliminar el registro de "${libro.nombre}"?`)) {
     libros = libros.filter(l => l.id !== id);
-    guardarDatos();
+    guardarDatos(); // Guarda local y dispara Action
     renderizar();
     mostrarToast('Registro eliminado', 'error');
   }
 });
 
-/* =========================================================
-   EXPORTAR (respaldo manual)
-   ========================================================= */
+/* Exportar respaldo */
 document.getElementById('btnExportar').addEventListener('click', function () {
-  if (libros.length === 0) {
-    mostrarToast('No hay registros para exportar', 'error');
-    return;
-  }
+  if (libros.length === 0) return mostrarToast('No hay registros para exportar', 'error');
   const blob = new Blob([JSON.stringify(libros, null, 2)], { type: 'application/json' });
   const url  = URL.createObjectURL(blob);
   const a    = document.createElement('a');
-  a.href = url;
-  a.download = 'biblioteca.json';
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
+  a.href = url; a.download = 'biblioteca.json';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
   URL.revokeObjectURL(url);
-  mostrarToast('Archivo biblioteca.json descargado', 'ok');
+  mostrarToast('Archivo descargado', 'ok');
 });
 
-/* =========================================================
-   INICIO
-   ========================================================= */
-(async function iniciar() {
-  // Indicador de estado de GitHub
+/* Configurar Token */
+document.getElementById('btnConfigToken').addEventListener('click', function () {
+  const token = prompt("Pega aquí tu Token de GitHub (PAT).\nSe guardará SOLO en este navegador, no en el código.", githubToken);
+  if (token !== null) {
+    githubToken = token.trim();
+    localStorage.setItem(CLAVE_TOKEN, githubToken);
+    actualizarBadge();
+    mostrarToast(githubToken ? 'Token configurado correctamente' : 'Token eliminado', 'ok');
+  }
+});
+
+/* Actualizar badge de estado */
+function actualizarBadge() {
   const badge = document.getElementById('estadoGithub');
   if (githubActivado()) {
     badge.textContent = 'activa';
     badge.className = 'estado on';
   } else {
-    badge.textContent = 'desactivada (configura el token)';
+    badge.textContent = 'desactivada';
     badge.className = 'estado off';
   }
+}
 
+/* =========================================================
+   INICIO
+   ========================================================= */
+(async function iniciar() {
+  actualizarBadge();
   await cargarDatos();
   renderizar();
 })();
